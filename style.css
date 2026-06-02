@@ -24,15 +24,23 @@ body {
     position: fixed;
     inset: 0;
     z-index: -2;
-    background: linear-gradient(-45deg, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d, #f77737);
+    background: linear-gradient(-45deg, #1a0033, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d);
     background-size: 400% 400%;
-    animation: gradientMove 10s ease infinite;
+    animation: gradientMove 8s ease infinite;
 }
 
 @keyframes gradientMove {
     0%   { background-position: 0% 50%; }
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
+}
+
+/* Dark overlay so content is readable */
+.bg-wallpaper::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.35);
 }
 
 /* Floating particles */
@@ -45,7 +53,7 @@ body {
 
 .particle {
     position: absolute;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.25);
     border-radius: 50%;
     animation: floatUp linear infinite;
 }
@@ -53,20 +61,20 @@ body {
 @keyframes floatUp {
     0%   { transform: translateY(105vh) scale(0); opacity: 0; }
     10%  { opacity: 1; }
-    90%  { opacity: 1; }
-    100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    90%  { opacity: 0.6; }
+    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
 }
 
-.particle:nth-child(1)  { width: 90px; height: 90px; left: 5%;  animation-duration: 14s; animation-delay: 0s; }
-.particle:nth-child(2)  { width: 55px; height: 55px; left: 15%; animation-duration: 11s; animation-delay: -2s; }
-.particle:nth-child(3)  { width: 40px; height: 40px; left: 28%; animation-duration: 16s; animation-delay: -5s; }
-.particle:nth-child(4)  { width: 100px; height: 100px; left: 42%; animation-duration: 13s; animation-delay: -7s; }
-.particle:nth-child(5)  { width: 30px; height: 30px; left: 55%; animation-duration: 10s; animation-delay: -3s; }
-.particle:nth-child(6)  { width: 70px; height: 70px; left: 68%; animation-duration: 15s; animation-delay: -8s; }
-.particle:nth-child(7)  { width: 45px; height: 45px; left: 78%; animation-duration: 12s; animation-delay: -4s; }
-.particle:nth-child(8)  { width: 60px; height: 60px; left: 88%; animation-duration: 17s; animation-delay: -6s; }
-.particle:nth-child(9)  { width: 35px; height: 35px; left: 92%; animation-duration: 9s;  animation-delay: -1s; }
-.particle:nth-child(10) { width: 80px; height: 80px; left: 50%; animation-duration: 18s; animation-delay: -9s; }
+.particle:nth-child(1)  { width: 100px; height: 100px; left: 5%;  animation-duration: 14s; animation-delay: 0s; background: rgba(255,255,255,0.2); }
+.particle:nth-child(2)  { width: 70px; height: 70px; left: 15%; animation-duration: 11s; animation-delay: -2s; background: rgba(255,255,255,0.3); }
+.particle:nth-child(3)  { width: 50px; height: 50px; left: 28%; animation-duration: 16s; animation-delay: -5s; background: rgba(255,200,255,0.25); }
+.particle:nth-child(4)  { width: 120px; height: 120px; left: 42%; animation-duration: 13s; animation-delay: -7s; background: rgba(255,255,255,0.15); }
+.particle:nth-child(5)  { width: 40px; height: 40px; left: 55%; animation-duration: 10s; animation-delay: -3s; background: rgba(200,200,255,0.3); }
+.particle:nth-child(6)  { width: 90px; height: 90px; left: 68%; animation-duration: 15s; animation-delay: -8s; background: rgba(255,255,255,0.2); }
+.particle:nth-child(7)  { width: 60px; height: 60px; left: 78%; animation-duration: 12s; animation-delay: -4s; background: rgba(255,180,255,0.25); }
+.particle:nth-child(8)  { width: 80px; height: 80px; left: 88%; animation-duration: 17s; animation-delay: -6s; background: rgba(255,255,255,0.2); }
+.particle:nth-child(9)  { width: 45px; height: 45px; left: 92%; animation-duration: 9s;  animation-delay: -1s; background: rgba(180,200,255,0.3); }
+.particle:nth-child(10) { width: 100px; height: 100px; left: 50%; animation-duration: 18s; animation-delay: -9s; background: rgba(255,255,255,0.18); }
 
 .container {
     max-width: 700px;
@@ -80,9 +88,9 @@ section {
 
 /* Hero */
 .hero {
-    background: rgba(0, 0, 0, 0.25);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
     color: #fff;
     text-align: center;
 }
@@ -110,9 +118,9 @@ section {
 #urlInput {
     width: 100%;
     padding: 16px 16px 16px 48px;
-    border: 2px solid rgba(255,255,255,0.3);
+    border: 2px solid rgba(255,255,255,0.35);
     border-radius: 10px;
-    background: rgba(255, 255, 255, 0.12);
+    background: rgba(0, 0, 0, 0.25);
     color: #fff;
     font-size: 1rem;
     outline: none;
@@ -120,7 +128,7 @@ section {
     backdrop-filter: blur(6px);
 }
 
-#urlInput::placeholder { color: rgba(255,255,255,0.65); }
+#urlInput::placeholder { color: rgba(255,255,255,0.7); }
 
 #downloadBtn {
     display: block;
@@ -141,7 +149,7 @@ section {
 
 #downloadBtn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 /* Loader */
@@ -192,7 +200,7 @@ section {
 
 .download-btn:hover {
     transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.4);
 }
 
 .error-msg {
@@ -205,9 +213,11 @@ section {
     font-size: 0.95rem;
 }
 
-/* Content sections — transparent over the animated wallpaper */
+/* Content sections */
 .features, .how-to, .faq {
-    background: transparent;
+    background: rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
 }
 
 .features h2,
@@ -216,8 +226,8 @@ section {
     text-align: center;
     margin-bottom: 32px;
     font-size: 2rem;
-    color: #ffffff;
-    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 }
 
 .features-grid {
@@ -227,13 +237,13 @@ section {
 }
 
 .feature {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 12px;
     padding: 24px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.2);
     color: #fff;
 }
 
@@ -250,11 +260,11 @@ section {
 .step {
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.2);
     color: #fff;
 }
 
@@ -274,13 +284,13 @@ section {
 .step p { color: rgba(255,255,255,0.85); }
 
 .faq-item {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(14px);
-    -webkit-backdrop-filter: blur(14px);
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 12px;
-    border: 1px solid rgba(255,255,255,0.25);
+    border: 1px solid rgba(255,255,255,0.2);
     color: #fff;
 }
 
@@ -289,8 +299,8 @@ section {
 
 /* Footer */
 footer {
-    background: rgba(0, 0, 0, 0.8);
-    backdrop-filter: blur(6px);
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
     color: #fff;
     text-align: center;
     padding: 40px 0 20px;
