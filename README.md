@@ -1,22 +1,21 @@
 # Insta to MP4 - Download Instagram Videos Without Watermark
 
-A fast, free tool to download Instagram videos, reels, and stories in HD quality without watermarks.
+Download Instagram videos and reels in high quality MP4 format — no watermark, 100% free.
 
 ## Features
 
-- ✅ Download Instagram videos & reels
-- ✅ No watermark
-- ✅ HD quality
-- ✅ No registration required
-- ✅ Works on mobile & desktop
-- ✅ No software installation
+- ⚡ **Lightning Fast** - Download Instagram videos in seconds
+- 🎬 **No Watermark** - Get clean MP4 videos without Instagram watermarks
+- 📱 **Mobile Friendly** - Works perfectly on phones, tablets, and desktops
+- 🔒 **Safe and Private** - We don't store your data or downloaded videos
+- ♾️ **Unlimited Downloads** - Download as many videos as you want
+- 🎥 **HD Quality** - Download in the best available quality
 
 ## How to Use
 
-1. Copy any Instagram video/reel URL
-2. Paste it in the input box
-3. Click "Get Video"
-4. Download the MP4 file
+1. **Copy Instagram Link** - Open Instagram, find the video, tap Share → Copy Link
+2. **Paste the URL** - Paste the link into the input box above
+3. **Download MP4** - Click Download and your video starts downloading
 
 ## Supported URLs
 
@@ -24,20 +23,10 @@ A fast, free tool to download Instagram videos, reels, and stories in HD quality
 - Instagram reels: `https://www.instagram.com/reel/...`
 - Instagram TV: `https://www.instagram.com/tv/...`
 
-## Deployment
+## Live Site
 
-This is a static site hosted on GitHub Pages.
-
-```bash
-# Clone and deploy
-git clone https://github.com/USERNAME/insta-to-mp4.git
-# Then enable GitHub Pages in Settings → Pages → Source: Deploy from gh-pages branch
-```
+https://pc-softwares-hub.github.io/Insta-to-mp4/
 
 ## Disclaimer
 
-This tool is for educational purposes only. Please respect Instagram's Terms of Service and copyright laws. Only download content you have permission to save.
-
-## License
-
-MIT License
+For personal use only. Respect copyright and Instagram's Terms of Service. Not affiliated with Instagram.
