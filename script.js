@@ -1,85 +1,134 @@
 const urlInput = document.getElementById('urlInput');
 const downloadBtn = document.getElementById('downloadBtn');
-const loaderEl = document.getElementById('loader');
-const resultEl = document.getElementById('result');
+const result = document.getElementById('result');
+const error = document.getElementById('error');
+const loading = document.getElementById('loading');
 const videoPreview = document.getElementById('videoPreview');
 const imagePreview = document.getElementById('imagePreview');
-const downloadBtnFinal = document.getElementById('downloadBtnFinal');
-const errorEl = document.getElementById('error');
+const videoTitle = document.getElementById('videoTitle');
+const videoAuthor = document.getElementById('videoAuthor');
+const videoMeta = document.getElementById('videoMeta');
+const downloadMp4 = document.getElementById('downloadMp4');
+const copyLink = document.getElementById('copyLink');
 
-function showError(msg) {
-    errorEl.textContent = msg;
-    errorEl.classList.remove('hidden');
-    resultEl.classList.add('hidden');
-    loaderEl.classList.add('hidden');
+let currentVideoUrl = '';
+let currentThumbnail = '';
+
+function show(el) {
+  [result, error, loading].forEach(e => e.classList.add('hidden'));
+  el.classList.remove('hidden');
 }
 
-function detectPlatform(url) {
-    if (/instagram\.com/.test(url)) return 'instagram';
-    if (/tiktok\.com/.test(url)) return 'tiktok';
-    if (/youtube\.com|youtu\.be/.test(url)) return 'youtube';
-    if (/facebook\.com/.test(url)) return 'facebook';
-    if (/twitter\.com|x\.com/.test(url)) return 'twitter';
-    return null;
+function isValidInstagramUrl(url) {
+  const patterns = [
+    /https?:\/\/(www\.)?instagram\.com\/p\/[\w-]+/i,
+    /https?:\/\/(www\.)?instagram\.com\/reel\/[\w-]+/i,
+    /https?:\/\/(www\.)?instagram\.com\/tv\/[\w-]+/i,
+  ];
+  return patterns.some(p => p.test(url.trim()));
 }
 
 downloadBtn.addEventListener('click', async () => {
-    const url = urlInput.value.trim();
-    if (!url) return showError('Please enter a URL.');
+  const url = urlInput.value.trim();
+  if (!url) {
+    error.textContent = 'Please paste an Instagram URL';
+    show(error);
+    return;
+  }
+  if (!isValidInstagramUrl(url)) {
+    error.textContent = 'Please enter a valid Instagram URL';
+    show(error);
+    return;
+  }
 
-    resultEl.classList.add('hidden');
-    errorEl.classList.add('hidden');
-    loaderEl.classList.remove('hidden');
+  downloadBtn.disabled = true;
+  show(loading);
 
-    const platform = detectPlatform(url);
-    if (!platform) return showError('Unsupported platform.');
-
-    try {
-        let data;
-        if (platform === 'instagram') {
-            data = await window.btch.igdl(url);
-        } else if (platform === 'tiktok') {
-            data = await window.btch.ttdl(url);
-        } else if (platform === 'youtube') {
-            data = await window.btch.youtube(url);
-        } else if (platform === 'facebook') {
-            data = await window.btch.fbdown(url);
-        } else if (platform === 'twitter') {
-            data = await window.btch.twitter(url);
-        }
-
-        if (!data || data.status === false) {
-            throw new Error(data?.message || 'No media found.');
-        }
-
-        const mediaUrl = data?.result?.[0]?.url || data?.url || data?.download?.[0]?.url;
-        const thumbnail = data?.result?.[0]?.thumbnail || data?.thumbnail || '';
-
-        if (!mediaUrl) {
-            throw new Error('No download URL found.');
-        }
-
-        const isVideo = platform === 'instagram' || platform === 'tiktok' || mediaUrl.includes('.mp4') || mediaUrl.includes('cdninstagram.com') || mediaUrl.includes('fbcdn.net');
-
-        if (isVideo) {
-            videoPreview.src = mediaUrl;
-            videoPreview.poster = thumbnail;
-            videoPreview.hidden = false;
-            imagePreview.hidden = true;
-            downloadBtnFinal.href = mediaUrl;
-            downloadBtnFinal.textContent = '⬇ Download Video';
-        } else {
-            videoPreview.hidden = true;
-            imagePreview.src = mediaUrl;
-            imagePreview.hidden = false;
-            downloadBtnFinal.href = mediaUrl;
-            downloadBtnFinal.textContent = '⬇ Download Image';
-        }
-
-        loaderEl.classList.add('hidden');
-        resultEl.classList.remove('hidden');
-        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } catch (err) {
-        showError(err.message || 'Something went wrong.');
+  try {
+    const data = await window.btch.igdl(url);
+    
+    if (!data || data.status === false) {
+      throw new Error(data?.message || 'No media found');
     }
+
+    const mediaUrl = data?.result?.[0]?.url || data?.url;
+    const thumbnail = data?.result?.[0]?.thumbnail || data?.thumbnail || '';
+    
+    if (!mediaUrl) {
+      throw new Error('No download URL found');
+    }
+
+    currentVideoUrl = mediaUrl;
+    currentThumbnail = thumbnail;
+
+    const isVideo = mediaUrl.includes('.mp4') || mediaUrl.includes('cdninstagram.com') || mediaUrl.includes('fbcdn.net');
+
+    if (isVideo) {
+      videoPreview.src = mediaUrl;
+      videoPreview.hidden = false;
+      imagePreview.hidden = true;
+      videoTitle.textContent = 'Instagram Video';
+    } else {
+      imagePreview.src = mediaUrl;
+      imagePreview.hidden = false;
+      videoPreview.hidden = true;
+      videoTitle.textContent = 'Instagram Image';
+    }
+
+    if (thumbnail) {
+      videoPreview.poster = thumbnail;
+    }
+
+    videoAuthor.textContent = '';
+    videoMeta.textContent = 'Ready to download';
+
+    show(result);
+  } catch (err) {
+    error.textContent = err.message || 'Something went wrong. Try another link.';
+    show(error);
+  } finally {
+    downloadBtn.disabled = false;
+  }
+});
+
+downloadMp4.addEventListener('click', async () => {
+  if (!currentVideoUrl) return;
+  try {
+    downloadMp4.textContent = 'Starting download...';
+    downloadMp4.disabled = true;
+    
+    const response = await fetch(currentVideoUrl);
+    if (!response.ok) {
+      throw new Error('Download failed');
+    }
+    
+    const blob = await response.blob();
+    const downloadUrl = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = downloadUrl;
+    a.download = 'instagram-video.mp4';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(downloadUrl);
+  } catch (err) {
+    error.textContent = err.message || 'Download failed';
+    show(error);
+  } finally {
+    downloadMp4.textContent = '⬇ Download Video';
+    downloadMp4.disabled = false;
+  }
+});
+
+copyLink.addEventListener('click', async () => {
+  if (!currentVideoUrl) return;
+  try {
+    await navigator.clipboard.writeText(currentVideoUrl);
+    const original = copyLink.textContent;
+    copyLink.textContent = 'Copied!';
+    setTimeout(() => copyLink.textContent = original, 2000);
+  } catch {
+    error.textContent = 'Failed to copy link';
+    show(error);
+  }
 });
