@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insta to MP4 - Download Instagram Videos & Reels Without Watermark</title>
-    <meta name="description" content="Download Instagram videos, reels, and stories without watermark in HD quality. Fast, free, and no registration required. Get direct MP4 links instantly.">
-    <meta name="keywords" content="insta download, instagram video downloader, insta reel download, mp4 download, instagram reel, insta to mp4, download instagram video, no watermark">
-    <meta name="author" content="InstaDownloader">
+    <title>Insta to MP4 - Download Instagram Videos</title>
+    <meta name="description" content="Download Instagram videos, reels, and stories without watermark in HD quality. Fast, free, and no registration required.">
+    <meta name="keywords" content="insta download, instagram video downloader, insta reel download, insta to mp4, download instagram video, no watermark">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://instatomp4.github.io/">
-
+    <link rel="canonical" href="https://pc-softwares-hub.github.io/Insta-to-mp4/">
     <meta property="og:title" content="Insta to MP4 - Download Instagram Videos Without Watermark">
     <meta property="og:description" content="Download Instagram videos, reels, and stories in HD quality without watermark. Fast and free.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://instatomp4.github.io/">
-    <meta property="og:image" content="https://instatomp4.github.io/og-image.png">
-
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Insta to MP4 - Download Instagram Videos">
-    <meta name="twitter:description" content="Download Instagram videos without watermark in HD quality.">
-
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <h1>📸 InstaDownloader</h1>
-        <p class="subtitle">Paste any Instagram post, reel or video URL to download it in HD — no watermark, free</p>
+        <div class="logo">
+            <div class="logo-icon">📸</div>
+            <h1>InstaToMP4</h1>
+        </div>
+        <p class="subtitle">Download Instagram videos & reels without watermark</p>
 
-        <div class="card">
-            <div class="input-row">
-                <input type="url" id="urlInput" placeholder="https://www.instagram.com/reel/..." />
-                <button id="downloadBtn">Get Video</button>
-            </div>
-
-            <div id="status" class="status hidden"></div>
-
-            <div id="result" class="result hidden">
-                <div class="media-preview">
-                    <video id="videoPreview" controls playsinline></video>
-                    <img id="imagePreview" hidden />
-                </div>
-                <div class="actions">
-                    <a id="downloadBtnFinal" class="btn-primary" download>⬇ Download Video</a>
-                </div>
+        <div class="input-card">
+            <div class="input-wrapper">
+                <input type="url" id="urlInput" placeholder="Paste Instagram URL here...">
+                <button id="downloadBtn">Download</button>
             </div>
         </div>
 
-        <p class="footer-note">Works for public Instagram posts & reels. No login required.</p>
+        <div id="loader" class="loader hidden">
+            <div class="spinner"></div>
+            <p>Fetching video...</p>
+        </div>
+
+        <div id="result" class="result hidden">
+            <div class="media-container">
+                <video id="videoPreview" controls playsinline></video>
+                <img id="imagePreview" hidden />
+            </div>
+            <a id="downloadBtnFinal" class="download-btn">⬇ Download Video</a>
+        </div>
+
+        <div id="error" class="error-msg hidden"></div>
+
+        <div class="footer">
+            <p>Works for public posts & reels • No watermark • HD quality</p>
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/btch-downloader@6.0.25/dist/browser/index.min.js"></script>

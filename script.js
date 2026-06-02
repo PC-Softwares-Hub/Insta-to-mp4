@@ -1,15 +1,17 @@
 const urlInput = document.getElementById('urlInput');
 const downloadBtn = document.getElementById('downloadBtn');
-const statusEl = document.getElementById('status');
+const loaderEl = document.getElementById('loader');
 const resultEl = document.getElementById('result');
 const videoPreview = document.getElementById('videoPreview');
 const imagePreview = document.getElementById('imagePreview');
 const downloadBtnFinal = document.getElementById('downloadBtnFinal');
+const errorEl = document.getElementById('error');
 
-function showStatus(type, message) {
-    statusEl.className = `status ${type}`;
-    statusEl.textContent = message;
-    statusEl.classList.remove('hidden');
+function showError(msg) {
+    errorEl.textContent = msg;
+    errorEl.classList.remove('hidden');
+    resultEl.classList.add('hidden');
+    loaderEl.classList.add('hidden');
 }
 
 function detectPlatform(url) {
@@ -23,15 +25,14 @@ function detectPlatform(url) {
 
 downloadBtn.addEventListener('click', async () => {
     const url = urlInput.value.trim();
-    if (!url) return showStatus('error', 'Please enter a URL.');
+    if (!url) return showError('Please enter a URL.');
 
     resultEl.classList.add('hidden');
-    statusEl.classList.add('hidden');
+    errorEl.classList.add('hidden');
+    loaderEl.classList.remove('hidden');
 
     const platform = detectPlatform(url);
-    if (!platform) return showStatus('error', 'Unsupported platform.');
-
-    showStatus('loading', 'Fetching media...');
+    if (!platform) return showError('Unsupported platform.');
 
     try {
         let data;
@@ -48,24 +49,21 @@ downloadBtn.addEventListener('click', async () => {
         }
 
         if (!data || data.status === false) {
-            throw new Error(data?.message || 'No downloadable media found.');
+            throw new Error(data?.message || 'No media found.');
         }
 
         const mediaUrl = data?.result?.[0]?.url || data?.url || data?.download?.[0]?.url;
         const thumbnail = data?.result?.[0]?.thumbnail || data?.thumbnail || '';
 
         if (!mediaUrl) {
-            throw new Error('No media URL found in response.');
+            throw new Error('No download URL found.');
         }
 
         const isVideo = platform === 'instagram' || platform === 'tiktok' || mediaUrl.includes('.mp4') || mediaUrl.includes('cdninstagram.com') || mediaUrl.includes('fbcdn.net');
 
-        if (thumbnail && isVideo) {
-            videoPreview.poster = thumbnail;
-        }
-
         if (isVideo) {
             videoPreview.src = mediaUrl;
+            videoPreview.poster = thumbnail;
             videoPreview.hidden = false;
             imagePreview.hidden = true;
             downloadBtnFinal.href = mediaUrl;
@@ -74,14 +72,13 @@ downloadBtn.addEventListener('click', async () => {
             videoPreview.hidden = true;
             imagePreview.src = mediaUrl;
             imagePreview.hidden = false;
-            imagePreview.style.aspectRatio = 'auto';
             downloadBtnFinal.href = mediaUrl;
             downloadBtnFinal.textContent = '⬇ Download Image';
         }
 
-        statusEl.classList.add('hidden');
+        loaderEl.classList.add('hidden');
         resultEl.classList.remove('hidden');
     } catch (err) {
-        showStatus('error', err.message || 'Something went wrong.');
+        showError(err.message || 'Something went wrong.');
     }
 });
