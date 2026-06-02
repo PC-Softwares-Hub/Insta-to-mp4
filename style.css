@@ -4,20 +4,22 @@
     --primary: #405de6;
     --secondary: #833ab4;
     --accent: #e1306c;
-    --dark: #121212;
-    --light: #fff;
-    --text-muted: #8e8e8e;
 }
 
-html { scroll-behavior: smooth; }
+html {
+    scroll-behavior: smooth;
+    background: linear-gradient(-45deg, #1a0033, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d);
+    background-size: 400% 400%;
+    animation: gradientMove 10s ease infinite;
+}
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(-45deg, #1a0033, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d);
-    background-size: 400% 400%;
-    animation: gradientMove 8s ease infinite;
     color: #fff;
     line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background: transparent;
 }
 
 @keyframes gradientMove {
@@ -110,7 +112,7 @@ section {
 }
 
 @keyframes spin { to { transform: rotate(360deg); } }
-.loader p { color: rgba(255,255,255,0.85); }
+.loader p { color: rgba(255,255,255,0.88); }
 
 /* Result */
 .result { margin-top: 24px; }
@@ -158,14 +160,14 @@ section {
     font-size: 0.95rem;
 }
 
-/* Content sections */
+/* Content */
 .features h2,
 .how-to h2,
 .faq h2 {
     text-align: center;
     margin-bottom: 32px;
     font-size: 2rem;
-    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.55);
 }
 
 .features-grid {
@@ -179,7 +181,7 @@ section {
     border-radius: 12px;
     padding: 24px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .feature-icon { font-size: 2.5rem; margin-bottom: 12px; }
@@ -197,7 +199,7 @@ section {
     padding: 20px;
     background: rgba(0, 0, 0, 0.35);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .step-number {
@@ -220,7 +222,7 @@ section {
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 12px;
-    border: 1px solid rgba(255,255,255,0.15);
+    border: 1px solid rgba(255,255,255,0.18);
 }
 
 .faq-item h3 { margin-bottom: 8px; font-size: 1.1rem; }
@@ -229,6 +231,7 @@ section {
 /* Footer */
 footer {
     background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(6px);
     color: #fff;
     text-align: center;
     padding: 40px 0 20px;
