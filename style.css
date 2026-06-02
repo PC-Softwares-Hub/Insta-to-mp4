@@ -11,11 +11,12 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: var(--dark);
+    color: #fff;
     line-height: 1.6;
     min-height: 100vh;
     overflow-x: hidden;
     position: relative;
+    background: transparent;
 }
 
 /* Full page animated wallpaper background */
@@ -215,8 +216,8 @@ section {
     text-align: center;
     margin-bottom: 32px;
     font-size: 2rem;
-    color: var(--dark);
-    text-shadow: 0 1px 4px rgba(255,255,255,0.6);
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
 .features-grid {
@@ -226,17 +227,19 @@ section {
 }
 
 .feature {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 12px;
     padding: 24px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
 }
 
 .feature-icon { font-size: 2.5rem; margin-bottom: 12px; }
-.feature h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.feature h3 { margin-bottom: 8px; font-size: 1.2rem; color: #fff; }
+.feature p { color: rgba(255,255,255,0.85); }
 
 .steps {
     display: grid;
@@ -247,11 +250,12 @@ section {
 .step {
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
 }
 
 .step-number {
@@ -266,17 +270,22 @@ section {
     margin: 0 auto 12px;
 }
 
+.step h3 { color: #fff; }
+.step p { color: rgba(255,255,255,0.85); }
+
 .faq-item {
-    background: rgba(255, 255, 255, 0.55);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 12px;
-    border: 1px solid rgba(255,255,255,0.4);
+    border: 1px solid rgba(255,255,255,0.25);
+    color: #fff;
 }
 
-.faq-item h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.faq-item h3 { margin-bottom: 8px; font-size: 1.1rem; color: #fff; }
+.faq-item p { color: rgba(255,255,255,0.85); }
 
 /* Footer */
 footer {
