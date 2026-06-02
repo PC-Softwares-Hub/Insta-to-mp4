@@ -78,6 +78,7 @@ downloadBtn.addEventListener('click', async () => {
 
         loaderEl.classList.add('hidden');
         resultEl.classList.remove('hidden');
+        resultEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     } catch (err) {
         showError(err.message || 'Something went wrong.');
     }

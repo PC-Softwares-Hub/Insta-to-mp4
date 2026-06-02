@@ -3,58 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Insta to MP4 - Download Instagram Videos</title>
-    <meta name="description" content="Download Instagram videos, reels, and stories without watermark in HD quality. Fast, free, and no registration required.">
-    <meta name="keywords" content="insta download, instagram video downloader, insta reel download, insta to mp4, download instagram video, no watermark">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://pc-softwares-hub.github.io/Insta-to-mp4/">
+    <title>Insta to MP4 - Download Instagram Videos Without Watermark</title>
+    <meta name="description" content="Download Instagram videos and reels in high quality MP4 format without watermark. 100% free, no registration required.">
+    <meta name="keywords" content="insta download, instagram video downloader, insta to mp4, download instagram reel, no watermark">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="background">
-        <div class="gradient"></div>
-        <div class="particles">
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-            <div class="particle"></div>
-        </div>
-    </div>
+    <section class="hero">
+        <div class="container">
+            <h1>Insta to MP4</h1>
+            <p class="subtitle">Download Instagram videos in high quality MP4 format — no watermark, 100% free</p>
 
-    <div class="container">
-        <div class="logo">
-            <div class="logo-icon">📸</div>
-            <h1>InstaToMP4</h1>
-        </div>
-        <p class="subtitle">Download Instagram videos & reels without watermark</p>
-
-        <div class="input-card">
             <div class="input-wrapper">
-                <input type="url" id="urlInput" placeholder="Paste Instagram URL here...">
-                <button id="downloadBtn">Download</button>
+                <span class="input-icon">📷</span>
+                <input type="url" id="urlInput" placeholder="Paste Instagram URL here (e.g. https://www.instagram.com/reel/...)">
+            </div>
+            <button id="downloadBtn">Download</button>
+
+            <div id="loader" class="loader hidden">
+                <div class="spinner"></div>
+                <p>Fetching video...</p>
+            </div>
+
+            <div id="result" class="result hidden">
+                <div class="media-container">
+                    <video id="videoPreview" controls playsinline></video>
+                    <img id="imagePreview" hidden />
+                </div>
+                <a id="downloadBtnFinal" class="download-btn">⬇ Download Video</a>
+            </div>
+
+            <div id="error" class="error-msg hidden"></div>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Why Choose Our Insta to MP4 Downloader?</h2>
+            <div class="features-grid">
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Lightning Fast</h3>
+                    <p>Download Instagram videos in seconds with our optimized pipeline.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎬</div>
+                    <h3>No Watermark</h3>
+                    <p>Get clean MP4 videos without Instagram watermarks.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">📱</div>
+                    <h3>Mobile Friendly</h3>
+                    <p>Works perfectly on phones, tablets, and desktops.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Safe and Private</h3>
+                    <p>We don't store your data or downloaded videos.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">♾️</div>
+                    <h3>Unlimited Downloads</h3>
+                    <p>Download as many videos as you want. No limits.</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🎥</div>
+                    <h3>HD Quality</h3>
+                    <p>Download in the best available quality. HD guaranteed.</p>
+                </div>
             </div>
         </div>
+    </section>
 
-        <div id="loader" class="loader hidden">
-            <div class="spinner"></div>
-            <p>Fetching video...</p>
-        </div>
-
-        <div id="result" class="result hidden">
-            <div class="media-container">
-                <video id="videoPreview" controls playsinline></video>
-                <img id="imagePreview" hidden />
+    <section class="how-to">
+        <div class="container">
+            <h2>How to Download Instagram Videos</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <h3>Copy Instagram Link</h3>
+                    <p>Open Instagram app or website, find the video, tap Share → Copy Link.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <h3>Paste the URL</h3>
+                    <p>Come back here and paste the Instagram video URL into the input box.</p>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <h3>Download MP4</h3>
+                    <p>Click Download and your video will start downloading instantly.</p>
+                </div>
             </div>
-            <a id="downloadBtnFinal" class="download-btn">⬇ Download Video</a>
         </div>
+    </section>
 
-        <div id="error" class="error-msg hidden"></div>
-
-        <div class="footer">
-            <p>Works for public posts & reels • No watermark • HD quality</p>
+    <section class="faq">
+        <div class="container">
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-item">
+                <h3>Is this Insta to MP4 downloader free?</h3>
+                <p>Yes, completely free. No hidden charges, no registration required.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Does this remove the Instagram watermark?</h3>
+                <p>Yes, the downloaded MP4 will not have Instagram watermarks.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Is it safe to use?</h3>
+                <p>Absolutely. We never store your data or the videos you download.</p>
+            </div>
+            <div class="faq-item">
+                <h3>Can I download Instagram reels?</h3>
+                <p>Yes, works for all Instagram posts, reels, and IGTV videos.</p>
+            </div>
         </div>
-    </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Insta to MP4 — The fastest free Instagram video downloader.</p>
+            <p><a href="#">Features</a> | <a href="#how-to">How to Use</a> | <a href="#faq">FAQ</a></p>
+            <p class="copyright">For personal use only. Respect copyright and Instagram's Terms of Service. Not affiliated with Instagram.</p>
+        </div>
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/btch-downloader@6.0.25/dist/browser/index.min.js"></script>
     <script src="script.js"></script>
