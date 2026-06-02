@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow:
+
+Sitemap: https://pc-softwares-hub.github.io/Insta-to-mp4/sitemap.xml
