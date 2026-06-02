@@ -12,23 +12,74 @@
 
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
     min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
     color: #fff;
+    overflow: hidden;
+}
+
+.background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.gradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-mid), var(--gradient-end));
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.particles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.particle {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    animation: float 15s infinite linear;
+}
+
+.particle:nth-child(1) { width: 80px; height: 80px; top: 20%; left: 10%; animation-delay: 0s; }
+.particle:nth-child(2) { width: 60px; height: 60px; top: 60%; left: 80%; animation-delay: -3s; }
+.particle:nth-child(3) { width: 40px; height: 40px; top: 30%; left: 50%; animation-delay: -6s; }
+.particle:nth-child(4) { width: 100px; height: 100px; top: 80%; left: 20%; animation-delay: -9s; }
+.particle:nth-child(5) { width: 30px; height: 30px; top: 10%; left: 70%; animation-delay: -12s; }
+
+@keyframes float {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+    10% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
 }
 
 .container {
-    width: 100%;
+    position: relative;
     max-width: 420px;
+    margin: 40px auto;
     background: var(--light-bg);
     border-radius: 20px;
     padding: 32px 24px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-    color: var(--text-primary);
+    min-height: 80vh;
 }
 
 .logo {
@@ -41,6 +92,12 @@ body {
 
 .logo-icon {
     font-size: 28px;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
 }
 
 .logo h1 {
