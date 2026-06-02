@@ -9,24 +9,15 @@
     --text-muted: #8e8e8e;
 }
 
+html { scroll-behavior: smooth; }
+
 body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    color: #fff;
-    line-height: 1.6;
-    min-height: 100vh;
-    overflow-x: hidden;
-    position: relative;
-    background: transparent;
-}
-
-/* Full page animated wallpaper background */
-.bg-wallpaper {
-    position: fixed;
-    inset: 0;
-    z-index: -2;
     background: linear-gradient(-45deg, #1a0033, #405de6, #833ab4, #c13584, #e1306c, #fd1d1d);
     background-size: 400% 400%;
     animation: gradientMove 8s ease infinite;
+    color: #fff;
+    line-height: 1.6;
 }
 
 @keyframes gradientMove {
@@ -34,47 +25,6 @@ body {
     50%  { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
-
-/* Dark overlay so content is readable */
-.bg-wallpaper::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-}
-
-/* Floating particles */
-.particles {
-    position: fixed;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-}
-
-.particle {
-    position: absolute;
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 50%;
-    animation: floatUp linear infinite;
-}
-
-@keyframes floatUp {
-    0%   { transform: translateY(105vh) scale(0); opacity: 0; }
-    10%  { opacity: 1; }
-    90%  { opacity: 0.6; }
-    100% { transform: translateY(-10vh) scale(1.2); opacity: 0; }
-}
-
-.particle:nth-child(1)  { width: 100px; height: 100px; left: 5%;  animation-duration: 14s; animation-delay: 0s; background: rgba(255,255,255,0.2); }
-.particle:nth-child(2)  { width: 70px; height: 70px; left: 15%; animation-duration: 11s; animation-delay: -2s; background: rgba(255,255,255,0.3); }
-.particle:nth-child(3)  { width: 50px; height: 50px; left: 28%; animation-duration: 16s; animation-delay: -5s; background: rgba(255,200,255,0.25); }
-.particle:nth-child(4)  { width: 120px; height: 120px; left: 42%; animation-duration: 13s; animation-delay: -7s; background: rgba(255,255,255,0.15); }
-.particle:nth-child(5)  { width: 40px; height: 40px; left: 55%; animation-duration: 10s; animation-delay: -3s; background: rgba(200,200,255,0.3); }
-.particle:nth-child(6)  { width: 90px; height: 90px; left: 68%; animation-duration: 15s; animation-delay: -8s; background: rgba(255,255,255,0.2); }
-.particle:nth-child(7)  { width: 60px; height: 60px; left: 78%; animation-duration: 12s; animation-delay: -4s; background: rgba(255,180,255,0.25); }
-.particle:nth-child(8)  { width: 80px; height: 80px; left: 88%; animation-duration: 17s; animation-delay: -6s; background: rgba(255,255,255,0.2); }
-.particle:nth-child(9)  { width: 45px; height: 45px; left: 92%; animation-duration: 9s;  animation-delay: -1s; background: rgba(180,200,255,0.3); }
-.particle:nth-child(10) { width: 100px; height: 100px; left: 50%; animation-duration: 18s; animation-delay: -9s; background: rgba(255,255,255,0.18); }
 
 .container {
     max-width: 700px;
@@ -88,10 +38,6 @@ section {
 
 /* Hero */
 .hero {
-    background: rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    color: #fff;
     text-align: center;
 }
 
@@ -125,7 +71,6 @@ section {
     font-size: 1rem;
     outline: none;
     font-family: inherit;
-    backdrop-filter: blur(6px);
 }
 
 #urlInput::placeholder { color: rgba(255,255,255,0.7); }
@@ -214,20 +159,13 @@ section {
 }
 
 /* Content sections */
-.features, .how-to, .faq {
-    background: rgba(0, 0, 0, 0.35);
-    backdrop-filter: blur(4px);
-    -webkit-backdrop-filter: blur(4px);
-}
-
 .features h2,
 .how-to h2,
 .faq h2 {
     text-align: center;
     margin-bottom: 32px;
     font-size: 2rem;
-    color: #fff;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    text-shadow: 0 2px 8px rgba(0,0,0,0.6);
 }
 
 .features-grid {
@@ -237,19 +175,16 @@ section {
 }
 
 .feature {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.35);
     border-radius: 12px;
     padding: 24px;
     text-align: center;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
 .feature-icon { font-size: 2.5rem; margin-bottom: 12px; }
-.feature h3 { margin-bottom: 8px; font-size: 1.2rem; color: #fff; }
-.feature p { color: rgba(255,255,255,0.85); }
+.feature h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.feature p { color: rgba(255,255,255,0.88); }
 
 .steps {
     display: grid;
@@ -260,12 +195,9 @@ section {
 .step {
     text-align: center;
     padding: 20px;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.35);
     border-radius: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
 .step-number {
@@ -280,27 +212,23 @@ section {
     margin: 0 auto 12px;
 }
 
-.step h3 { color: #fff; }
-.step p { color: rgba(255,255,255,0.85); }
+.step h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.step p { color: rgba(255,255,255,0.88); }
 
 .faq-item {
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     padding: 20px;
     margin-bottom: 12px;
-    border: 1px solid rgba(255,255,255,0.2);
-    color: #fff;
+    border: 1px solid rgba(255,255,255,0.15);
 }
 
-.faq-item h3 { margin-bottom: 8px; font-size: 1.1rem; color: #fff; }
-.faq-item p { color: rgba(255,255,255,0.85); }
+.faq-item h3 { margin-bottom: 8px; font-size: 1.1rem; }
+.faq-item p { color: rgba(255,255,255,0.88); }
 
 /* Footer */
 footer {
     background: rgba(0, 0, 0, 0.85);
-    backdrop-filter: blur(8px);
     color: #fff;
     text-align: center;
     padding: 40px 0 20px;
