@@ -1,0 +1,135 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: linear-gradient(135deg, #405de6, #5851db, #833ab4, #c13584, #e1306c, #fd1d1d);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    color: #fff;
+}
+
+.container {
+    max-width: 560px;
+    width: 100%;
+}
+
+h1 {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 6px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.subtitle {
+    text-align: center;
+    opacity: 0.88;
+    margin-bottom: 24px;
+    font-size: 0.95rem;
+}
+
+.card {
+    background: #fff;
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+    color: #262626;
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+#urlInput {
+    flex: 1;
+    padding: 14px 16px;
+    border: 2px solid #dbdbdb;
+    border-radius: 10px;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+    min-width: 0;
+}
+#urlInput:focus { border-color: #c13584; }
+
+#downloadBtn {
+    padding: 14px 24px;
+    background: linear-gradient(135deg, #833ab4, #e1306c);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: opacity 0.2s;
+}
+#downloadBtn:hover { opacity: 0.85; }
+
+.status {
+    padding: 12px 16px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+}
+.status.loading {
+    background: #f3f0ff;
+    color: #5851db;
+    border: 1px solid #d1c4e9;
+}
+.status.error {
+    background: #fff5f5;
+    color: #c13584;
+    border: 1px solid #fce4ec;
+}
+
+.result { margin-top: 8px; }
+
+.media-preview {
+    border-radius: 12px;
+    overflow: hidden;
+    background: #000;
+    margin-bottom: 16px;
+    max-height: 420px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.media-preview video,
+.media-preview img {
+    max-width: 100%;
+    max-height: 420px;
+    object-fit: contain;
+}
+
+.actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-primary {
+    flex: 1;
+    display: block;
+    text-align: center;
+    padding: 14px;
+    background: linear-gradient(135deg, #833ab4, #e1306c);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 10px;
+    font-weight: 700;
+    transition: opacity 0.2s;
+}
+.btn-primary:hover { opacity: 0.85; }
+
+.hidden { display: none !important; }
+
+.footer-note {
+    text-align: center;
+    margin-top: 18px;
+    opacity: 0.75;
+    font-size: 0.8rem;
+}
