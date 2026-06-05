@@ -486,7 +486,7 @@ footer a {
 
 .whatsapp-float {
   position: fixed;
-  top: 24px;
+  bottom: 24px;
   left: 24px;
   width: 56px;
   height: 56px;
