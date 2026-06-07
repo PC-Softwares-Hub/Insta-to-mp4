@@ -484,6 +484,32 @@ footer a {
   }
 }
 
+.tiktok-float {
+  position: fixed;
+  bottom: 92px;
+  left: 24px;
+  width: 56px;
+  height: 56px;
+  background: #000;
+  border: 2px solid #ff0050;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 0.55rem;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  line-height: 1.2;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+  z-index: 999;
+  transition: transform 0.2s;
+}
+.tiktok-float:hover {
+  transform: translateY(-4px) scale(1.08);
+}
+
 .whatsapp-float {
   position: fixed;
   bottom: 24px;
